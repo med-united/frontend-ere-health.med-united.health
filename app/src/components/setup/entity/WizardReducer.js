@@ -28,7 +28,8 @@ const initialState = {
     "idp.base.url": "",
     "idp.client.id": "",
     "idp.auth.request.redirect.url": "",
-    "ere.workflow-service.prescription.server.url": ""
+    "ere.workflow-service.prescription.server.url": "",
+    "forward-ports": [0, 0, 0]
   }
 };
   
@@ -39,17 +40,21 @@ export const wizardReducer = createReducer(initialState, (builder) => {
       state.runtimeConfig["connector.base-url"] = "http"+(state.runtimeConfig["connector.https"] ? "s" : "")+"://"+state.runtimeConfig["connector.ip"];
     }
   }).addCase(closeWizardAction, (state, {}) => {
-		serverWebSocketActionForwarder.runtimeConfig(JSON.parse(JSON.stringify(state.runtimeConfig)));
+		serverWebSocketActionForwarder.runtimeConfig(JSON.parse(JSON.stringify(state.runtimeConfig)), true);
 		state.showWizard = false;
 	}).addCase(showWizardAction, (state, {}) => {
-		state.showWizard = true;
+    state.showWizard = true;
 	}).addCase(sshTunnelWorkedAction, (state, {payload}) => {
+		state.runtimeConfig["connector.base-url"] = "http"+(state.runtimeConfig["connector.https"] ? "s" : "")+"://localhost:"+state.runtimeConfig["forward-ports"][0];
     state.sshTunnelWorked = true
 	}).addCase(sshConnectionOfferingAction, (state, {payload}) => {
     state.runtimeConfig["idp.base.url"] = "https://localhost:"+payload.ports[1];
     state.runtimeConfig["idp.client.id"] = payload.idpClientId;
     state.runtimeConfig["idp.auth.request.redirect.url"] = payload.idpAuthRequestRedirectURL;
     state.runtimeConfig["ere.workflow-service.prescription.server.url"] = "https://localhost:"+payload.ports[2];
+    state.runtimeConfig["forward-ports"] = payload.ports;
+    state.runtimeConfig["ssh-user"] = payload.user;
+    state.runtimeConfig["ssh-secret"] = payload.secret;
 	})
   .addCase(resetSshTunnelWorkedAction, (state, {}) => {
 		state.sshTunnelWorked = false

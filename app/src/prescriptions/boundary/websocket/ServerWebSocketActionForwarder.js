@@ -12,10 +12,12 @@ class _ServerWebSocketActionForwarder {
         window.__socket = this.socket;
 
         this.socket.onopen = (event) => {
-            this.send({ type: "RequestSettings"});
-            this.send({ type: "GetCards"});
-            this.send({ type: "RequestStatus"});
-            setInterval(() => this.send({ type: "GetSignatureMode"}), 10000);
+            if(!this.runtimeConfigData) {
+                this.send({type: "RequestNewSSHConnection"})
+            } else {
+                this.initOperations();
+            }
+            this.socketIsOpen = true;
         };
 
         this.socket.onmessage = (event) => {
@@ -74,6 +76,13 @@ class _ServerWebSocketActionForwarder {
         };
     }
 
+    initOperations() {
+        this.send({ type: "RequestSettings"});
+        this.send({ type: "GetCards"});
+        this.send({ type: "RequestStatus"});
+        setInterval(() => this.send({ type: "GetSignatureMode"}), 10000);
+    }
+
     b64toBlob = (b64Data, contentType='', sliceSize=512) => {
         const byteCharacters = atob(b64Data);
         const byteArrays = [];
@@ -96,6 +105,9 @@ class _ServerWebSocketActionForwarder {
     
     runtimeConfig(runtimeConfigData) {
         this.runtimeConfigData = runtimeConfigData;
+        if(this.socketIsOpen) {
+            this.initOperations();
+        }
     }
 
     uuidv4() {
@@ -110,7 +122,8 @@ class _ServerWebSocketActionForwarder {
             message.id = this.uuidv4();
         }
         if(this.runtimeConfigData) {
-            message.runtimeConfig = this.runtimeConfigData;
+            message.runtimeConfig = {};
+            Object.assign(message.runtimeConfig, this.runtimeConfigData)
             if(!message.runtimeConfig["connector.user-id"]) {
                 delete message.runtimeConfig["connector.user-id"];
             }

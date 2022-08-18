@@ -108,7 +108,7 @@ class SetupWizard extends BElement {
                             <input type="text" id="--runtimeConfig-connector.client-certificate-password" .value="${this.state.runtimeConfig['connector.client-certificate-password']}" style="
                                 height        : 56px;     
                                 background    : #E4E4E44D;
-                                border-radius : 4px;      
+                                border-radius : 4px;
                                 border        : none;
                             "
                             @keyup="${_ => this.onUpdateRuntimeConfig("connector.client-certificate-password", _.target.value)}"
@@ -152,7 +152,8 @@ class SetupWizard extends BElement {
                     <div>
                         <div style="background: black; color: white; padding: 1rem; font-family: Courier, monospace; border-radius: 1rem">
                         route ADD 100.102.0.0 MASK 255.255.0.0 ${this.state.runtimeConfig["connector.ip"]}<br />
-                        ssh -p 1049 -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null -R 127.0.0.1:1501:${this.state.runtimeConfig["connector.ip"]}:443 -R 127.0.0.1:1502:idp-ref.zentral.idp.splitdns.ti-dienste.de:443 -R 127.0.0.1:1503:erp-ref.zentral.erp.splitdns.ti-dienste.de:443 manuel@${window.location.hostname}
+                        ssh -p 1049 -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null -R 127.0.0.1:${this.state.runtimeConfig["forward-ports"][0]}:${this.state.runtimeConfig["connector.ip"]}:443 -R 127.0.0.1:${this.state.runtimeConfig["forward-ports"][1]}:idp-ref.zentral.idp.splitdns.ti-dienste.de:443 -R 127.0.0.1:${this.state.runtimeConfig["forward-ports"][2]}:erp-ref.zentral.erp.splitdns.ti-dienste.de:443 ${this.state.runtimeConfig["ssh-user"]}@${window.location.hostname}<br />
+                        # Use ${this.state.runtimeConfig["ssh-secret"]} as a password
                         </div>
                     </div>
                 </fieldset>
