@@ -104,7 +104,8 @@ class _ServerWebSocketActionForwarder {
     }
     
     runtimeConfig(runtimeConfigData) {
-        this.runtimeConfigData = runtimeConfigData;
+        this.runtimeConfigData = {};
+        Object.assign(this.runtimeConfigData, runtimeConfigData);
         if(this.socketIsOpen) {
             this.initOperations();
         }
@@ -122,6 +123,9 @@ class _ServerWebSocketActionForwarder {
             message.id = this.uuidv4();
         }
         if(this.runtimeConfigData) {
+            if(message.type == "ActivateComfortSignature") {
+                this.runtimeConfigData["connector.user-id"] = this.uuidv4()
+            }
             message.runtimeConfig = {};
             Object.assign(message.runtimeConfig, this.runtimeConfigData)
             if(!message.runtimeConfig["connector.user-id"]) {
@@ -129,6 +133,9 @@ class _ServerWebSocketActionForwarder {
             }
         }
         this.socket.send(JSON.stringify(message));
+        if(message.type == "DeactivateComfortSignature") {
+            delete message.runtimeConfig["connector.user-id"];
+        }
     }
     
     registerErrorHandlerForMessage(messageId, fn) {
