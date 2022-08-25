@@ -75,7 +75,7 @@ class SetupWizard extends BElement {
                                 border        : none;     
                                 width         : 100%;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("connector.ip", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("connector.ip", _.target.value)}"
                             >
                             <!-- Show iframe with URL of connector to show if it is possible to connect to it -->
                         </div>
@@ -111,7 +111,7 @@ class SetupWizard extends BElement {
                                 border-radius : 4px;
                                 border        : none;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("connector.client-certificate-password", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("connector.client-certificate-password", _.target.value)}"
                             >
                         </div>
                         <div style="display:flex; flex-direction:row;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -124,7 +124,7 @@ class SetupWizard extends BElement {
                                     border        : none;
                                     width: 95%;
                                 "
-                                @keyup="${_ => this.onUpdateRuntimeConfig("connector.basic-auth-username", _.target.value)}"
+                                @blur="${_ => this.onUpdateRuntimeConfig("connector.basic-auth-username", _.target.value)}"
                                 >
                             </div>
                             <div style="flex-grow: 1;">
@@ -136,7 +136,7 @@ class SetupWizard extends BElement {
                                     border        : none;
                                     width: 100%;
                                 "
-                                @keyup="${_ => this.onUpdateRuntimeConfig("connector.basic-auth-password", _.target.value)}"
+                                @blur="${_ => this.onUpdateRuntimeConfig("connector.basic-auth-password", _.target.value)}"
                                 >
                             </div>
                         </div>
@@ -175,7 +175,7 @@ class SetupWizard extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("connector.mandant-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("connector.mandant-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -187,7 +187,7 @@ class SetupWizard extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("connector.client-system-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("connector.client-system-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -199,7 +199,7 @@ class SetupWizard extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("connector.workplace-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("connector.workplace-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -211,7 +211,7 @@ class SetupWizard extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("connector.user-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("connector.user-id", _.target.value)}"
                             >
                         </div>
                     </div>
@@ -227,7 +227,7 @@ class SetupWizard extends BElement {
                                 border-radius : 4px;      
                                 border        : none;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("ere.workflow-service.prescription.server.url", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("ere.workflow-service.prescription.server.url", _.target.value)}"
                             >
                         </div>
                         <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -238,7 +238,7 @@ class SetupWizard extends BElement {
                                 border-radius : 4px;      
                                 border        : none;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("idp.base.url", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("idp.base.url", _.target.value)}"
                             >
                         </div>
                         <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -249,7 +249,7 @@ class SetupWizard extends BElement {
                                 border-radius : 4px;      
                                 border        : none;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("idp.client.id", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("idp.client.id", _.target.value)}"
                             >
                         </div>
                         <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -260,7 +260,7 @@ class SetupWizard extends BElement {
                                 border-radius : 4px;      
                                 border        : none;
                             "
-                            @keyup="${_ => this.onUpdateRuntimeConfig("idp.auth.request.redirect.url", _.target.value)}"
+                            @blur="${_ => this.onUpdateRuntimeConfig("idp.auth.request.redirect.url", _.target.value)}"
                             >
                         </div>
                     </div>

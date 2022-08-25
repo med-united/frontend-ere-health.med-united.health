@@ -6,8 +6,8 @@ $rem-base-font: 16px;
 
 
 @mixin em($font-size, $line-height: 0) {
-  font-size: ($font-size / $rem-base-font) * 1rem;
-  line-height: ($line-height / $font-size) * 1;
+  font-size: calc($font-size / $rem-base-font) * 1rem;
+  line-height: calc($line-height / $font-size) * 1;
 }
 
 @mixin appearance {

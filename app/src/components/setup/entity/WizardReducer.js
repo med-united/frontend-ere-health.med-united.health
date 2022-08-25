@@ -6,7 +6,8 @@ import {
     showWizardAction,
     sshConnectionOfferingAction,
     sshTunnelWorkedAction,
-    resetSshTunnelWorkedAction
+    resetSshTunnelWorkedAction,
+    newUserIdForComfortSignatureAction
 } from "../control/WizardControl.js";
 
 
@@ -58,5 +59,8 @@ export const wizardReducer = createReducer(initialState, (builder) => {
 	})
   .addCase(resetSshTunnelWorkedAction, (state, {}) => {
 		state.sshTunnelWorked = false
-	});
+	})
+  .addCase(newUserIdForComfortSignatureAction, (state, {payload}) => {
+    state.runtimeConfig["connector.user-id"] = payload;
+  });
 });

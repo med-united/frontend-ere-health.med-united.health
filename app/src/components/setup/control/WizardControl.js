@@ -6,6 +6,11 @@ export const updateRuntimeConfig = (path, value) => {
     store.dispatch(updateRuntimeConfigAction({path, value}));
 }
 
+export const newUserIdForComfortSignatureAction = createAction("newUserIdForComfortSignatureAction");
+export const newUserIdForComfortSignature = (userId) => {
+    store.dispatch(newUserIdForComfortSignatureAction(userId));
+}
+
 export const closeWizardAction = createAction("closeWizardAction");
 export const closeWizard = () => {
     store.dispatch(closeWizardAction());

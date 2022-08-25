@@ -2,7 +2,7 @@ import { addPrescription, addSigned, abortTasksStatus, showHTMLBundles, showGetS
 import { updateSettingsFromServer } from "../../../components/settings/control/SettingsControl.js";
 import { updateStatusFromServer } from "../../../components/status/control/StatusControl.js";
 import { updateCardsFromServer } from "../../../components/cards/control/CardsControl.js";
-import { sshTunnelWorked, sshConnectionOffering } from "../../../components/setup/control/WizardControl.js";
+import { sshTunnelWorked, sshConnectionOffering, newUserIdForComfortSignature } from "../../../components/setup/control/WizardControl.js";
 
 class _ServerWebSocketActionForwarder {
     
@@ -124,7 +124,10 @@ class _ServerWebSocketActionForwarder {
         }
         if(this.runtimeConfigData) {
             if(message.type == "ActivateComfortSignature") {
-                this.runtimeConfigData["connector.user-id"] = this.uuidv4()
+                this.runtimeConfigData["connector.user-id"] = this.uuidv4();
+                setTimeout(() => {
+                    newUserIdForComfortSignature(this.runtimeConfigData["connector.user-id"]);
+                });
             }
             message.runtimeConfig = {};
             Object.assign(message.runtimeConfig, this.runtimeConfigData)
@@ -134,7 +137,10 @@ class _ServerWebSocketActionForwarder {
         }
         this.socket.send(JSON.stringify(message));
         if(message.type == "DeactivateComfortSignature") {
-            delete message.runtimeConfig["connector.user-id"];
+            delete this.runtimeConfigData["connector.user-id"];
+            setTimeout(() => {
+                newUserIdForComfortSignature(undefined);
+            });
         }
     }
     

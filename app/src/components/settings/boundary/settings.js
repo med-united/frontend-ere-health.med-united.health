@@ -100,7 +100,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("connector.base-url", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("connector.base-url", _.target.value)}"
                         >
                     </div>
                     <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px"> 
@@ -112,7 +112,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("connector.version", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("connector.version", _.target.value)}"
                         >
                     </div>
                     <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -138,7 +138,7 @@ class Settings extends BElement {
                             border-radius : 4px;      
                             border        : none;
                         "
-                        @keyup="${_ => this.onUpdateSetting("connector.client-certificate-password", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("connector.client-certificate-password", _.target.value)}"
                         >
                     </div>
                     <div style="display:flex; flex-direction:row;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -151,7 +151,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("connector.basic-auth-username", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("connector.basic-auth-username", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -163,7 +163,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 100%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("connector.basic-auth-password", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("connector.basic-auth-password", _.target.value)}"
                             >
                         </div>
                     </div>
@@ -177,7 +177,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("connector.mandant-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("connector.mandant-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -189,7 +189,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("connector.client-system-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("connector.client-system-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -201,7 +201,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("connector.workplace-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("connector.workplace-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -213,7 +213,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("connector.user-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("connector.user-id", _.target.value)}"
                             >
                         </div>
                     </div>
@@ -251,7 +251,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kim.fromKimAddress", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kim.fromKimAddress", _.target.value)}"
                         >
                         <label for="kim-smtp-server">KIM SMTP Server (Client Modul)*</label>
                         <input type="text" id="kim-smtp-server" .value="${this.state['kim.smtpHostServer']}" style="
@@ -261,7 +261,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kim.smtpHostServer", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kim.smtpHostServer", _.target.value)}"
                         >
                         <label for="kim-fd-server">KIM Fachdienst Server*</label>
                         <input type="text" id="kim-fd-server" .value="${this.state['kim.smtpFdServer']}" style="
@@ -271,7 +271,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kim.smtpFdServer", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kim.smtpFdServer", _.target.value)}"
                         >
                         <label for="kim-smtp-password">KIM Password*</label>
                         <input type="text" id="kim-smtp-password" .value="${this.state['kim.smtpPassword']}" style="
@@ -281,7 +281,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kim.smtpPassword", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kim.smtpPassword", _.target.value)}"
                         >
                     </div>
                     <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px"> 
@@ -293,7 +293,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kim.vzd.base-url", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kim.vzd.base-url", _.target.value)}"
                         >
                     </div>
                     <div style="display:flex; flex-direction:column;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -319,7 +319,7 @@ class Settings extends BElement {
                             border-radius : 4px;      
                             border        : none;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kim.vzd.client-certificate-password", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kim.vzd.client-certificate-password", _.target.value)}"
                         >
                     </div>
                     <div style="display:flex; flex-direction:row;flex-grow: 1;padding: 7px;margin-top:5px;"> 
@@ -332,7 +332,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("kim.mandant-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("kim.mandant-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -344,7 +344,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("kim.client-system-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("kim.client-system-id", _.target.value)}"
                             >
                         </div>
                         <div style="flex-grow: 1;">
@@ -356,7 +356,7 @@ class Settings extends BElement {
                                 border        : none;
                                 width: 95%;
                             "
-                            @keyup="${_ => this.onUpdateSetting("kim.workplace-id", _.target.value)}"
+                            @blur="${_ => this.onUpdateSetting("kim.workplace-id", _.target.value)}"
                             >
                         </div>
                     </div>
@@ -371,7 +371,7 @@ class Settings extends BElement {
                             border        : none;     
                             width         : 100%;
                         "
-                        @keyup="${_ => this.onUpdateSetting("kbv.pruefnummer", _.target.value)}"
+                        @blur="${_ => this.onUpdateSetting("kbv.pruefnummer", _.target.value)}"
                         >
                     </div>
                 </fieldset>
